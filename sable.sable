@@ -1,0 +1,34 @@
+
+Package sable ;
+
+Helpers 
+    /* Our helpers */
+	numero = ['0' .. '9'] ;
+	letra = ['a' .. 'z'] | ['A' .. 'Z'] ;
+	under = '_' ;
+	cr = 13 ;
+	lf = 10 ;
+	tab = 9 ;
+	blank = ''| cr + lf |tab |lf | cr ;
+	space = ' ' ;
+	commentLinha = '//' ;
+	comment = '/*' + (numero|letra|space|blank)* + '*/' ;
+	inteiro = numero + numero* ;
+	real = numero + numero* + ',' + numero + numero* ;
+	
+	
+Tokens 
+	/* Our simple token definition(s). */
+	int = 'int' ;
+	float = 'float' ;
+	if = 'if' ;
+	char = 'char' ;
+	id = (under | letra) + (letra | numero | under)* ;
+	idNumero = inteiro | real ;
+	comentario = commentLinha | comment ;
+
+	
+
+Productions 
+    /* Our super-simple grammar */ 
+    program = [left]:integer plus [right]:integer semi ;
