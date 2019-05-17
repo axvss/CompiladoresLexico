@@ -26,9 +26,3 @@ Tokens
 	id = (under | letra) + (letra | numero | under)* ;
 	idNumero = inteiro | real ;
 	comentario = commentLinha | comment ;
-
-	
-
-Productions 
-    /* Our super-simple grammar */ 
-    program = [left]:integer plus [right]:integer semi ;
