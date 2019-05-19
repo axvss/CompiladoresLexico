@@ -2,27 +2,27 @@
 Package sable ;
 
 Helpers 
-    /* Our helpers */
 	numero = ['0' .. '9'] ;
 	letra = ['a' .. 'z'] | ['A' .. 'Z'] ;
 	under = '_' ;
 	cr = 13 ;
 	lf = 10 ;
 	tab = 9 ;
-	blank = ''| cr + lf |tab |lf | cr ;
+	blank = cr + lf |tab |lf | cr ;
 	space = ' ' ;
-	commentLinha = '//' ;
-	comment = '/*' + (numero|letra|space|blank)* + '*/' ;
-	inteiro = numero + numero* ;
-	real = numero + numero* + ',' + numero + numero* ;
+	inteiro = numero+ ;
+	real = numero+ ',' + numero+;
+	commentlinha = '//' ;
+	comment = '/*' + (under|inteiro|real|letra|space|blank)* + '*/' ;
+
 	
 	
-Tokens 
-	/* Our simple token definition(s). */
+Tokens
 	int = 'int' ;
 	float = 'float' ;
 	if = 'if' ;
 	char = 'char' ;
 	id = (under | letra) + (letra | numero | under)* ;
-	idNumero = inteiro | real ;
-	comentario = commentLinha | comment ;
+	idnumero = inteiro | real ;
+	blank = blank ;
+	comentario = (commentlinha | comment) ;
