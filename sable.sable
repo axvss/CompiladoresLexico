@@ -13,7 +13,7 @@ Helpers
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
 	commentlinha = '//' ;
-	comment = '/*' + (under|inteiro|real|letra|space|blank)* + '*/' ;
+	comment = '/*' + ((under|inteiro|real|letra|space|blank)*) + '*/' ;
 
 	
 	
