@@ -13,16 +13,37 @@ Helpers
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
 	commentlinha = '//' ;
-	comment = '/*' + (under|inteiro|real|letra|space|blank)* + '*/' ;
+	comment = '/*' + ((under|inteiro|real|letra|space|blank)*) + '*/' ;
 
 	
 	
 Tokens
+	comentario = (commentlinha | comment) ;
+	inicio = 'inicio' ;
+	fim = 'fim' ;
 	int = 'int' ;
 	float = 'float' ;
 	if = 'if' ;
 	char = 'char' ;
+	else = 'else' ;
+	for = 'for' ;
+	then = 'then' ;
+	true = 'true' ;
+	false = 'false' ;
+	caso = 'caso' ;
+	avalie = 'avalie' ;
+	booleano = 'bolleano' ;
+	e = 'e' ;
+	ou = 'ou' ;
+	not = 'not' ;
+	mais = '+' ;
+	menos = '-' ;
+	mult = '*' ;
+	div = '/';
+	operadorlogico = '>' |'<'|'='|'>='|'<>' ;
+	abrechave = '[' ;
+	fechachave = ']' ;
 	id = (under | letra) + (letra | numero | under)* ;
 	idnumero = inteiro | real ;
 	blank = blank ;
-	comentario = (commentlinha | comment) ;
+	
