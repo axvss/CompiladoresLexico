@@ -46,4 +46,8 @@ Tokens
 	id = (under | letra) + (letra | numero | under)* ;
 	idnumero = inteiro | real ;
 	blank = blank ;
+<<<<<<< HEAD
 	
+=======
+	comentario = (commentlinha | comment) ;
+>>>>>>> e316d58c6114607df4e28cc7db3f75c3084fae9b
