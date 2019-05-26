@@ -1,4 +1,3 @@
-
 Package sable ;
 
 Helpers 
@@ -8,17 +7,23 @@ Helpers
 	cr = 13 ;
 	lf = 10 ;
 	tab = 9 ;
-	blank = cr + lf |tab |lf | cr ;
 	space = ' ' ;
+	blank = cr + lf |tab |lf | cr;
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
-	commentlinha = '//' ;
+
 	comment = '/*' + ((under|inteiro|real|letra|space|blank)*) + '*/' ;
 
 	
 	
 Tokens
-	comentario = (commentlinha | comment) ;
+	inteiro = inteiro ;
+	real = real ;
+	commentlinha = '//' ;
+	comentariobloco =  comment ;
+	abc = '[' ;
+	fc = ']' ;
+	virg = ',';
 	inicio = 'inicio' ;
 	fim = 'fim' ;
 	int = 'int' ;
@@ -44,10 +49,10 @@ Tokens
 	abrechave = '[' ;
 	fechachave = ']' ;
 	id = (under | letra) + (letra | numero | under)* ;
-	idnumero = inteiro | real ;
+	spc = space ;
 	blank = blank ;
-<<<<<<< HEAD
+
+
+Ignored Tokens
+	blank ;
 	
-=======
-	comentario = (commentlinha | comment) ;
->>>>>>> e316d58c6114607df4e28cc7db3f75c3084fae9b
