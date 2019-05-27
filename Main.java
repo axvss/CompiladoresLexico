@@ -33,7 +33,7 @@ public class Main {
 				System.out.print((t.getClass().getSimpleName())) ;
 			}
 			t = lexer.next() ;
-			check = t.getClass().getSimpleName().toString() ;
+			check = t.getClass().getSimpleName();
 		}
 	 }
 }
