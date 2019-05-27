@@ -11,9 +11,12 @@ Helpers
 	blank = cr + lf |tab |lf | cr;
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
-
-	comment = '/*' + ((under|inteiro|real|letra|space|blank)*) + '*/' ;
-
+	
+	abrecomment = '/*' ;
+	fechacomment = '*/';
+	
+	comment = abrecomment + ((under|inteiro|real|letra|space|blank)*) + fechacomment ;
+	commentanin = abrecomment + ((under|inteiro|real|letra|space|blank|comment)*) + fechacomment ;
 	
 	
 Tokens
@@ -21,6 +24,7 @@ Tokens
 	real = real ;
 	commentlinha = '//' ;
 	comentariobloco =  comment ;
+	comentarioaninhado = commentanin ;
 	abc = '[' ;
 	fc = ']' ;
 	virg = ',';
@@ -55,4 +59,3 @@ Tokens
 
 Ignored Tokens
 	blank ;
-	
