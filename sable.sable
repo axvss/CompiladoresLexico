@@ -12,17 +12,17 @@ Helpers
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
 	
-	any = ((under|inteiro|real|letra|space)*);
+	any = (under|inteiro|real|letra|space);
 	abrecomment = '/*' ;
 	fechacomment = '*/';
-	comment = abrecomment + ((any|(blank)*)*) + fechacomment ;
-	commentanin = abrecomment + ((any|(blank)*|(comment)*)*) + fechacomment ;
+	comment = abrecomment + ((any|blank)*) + fechacomment ;
+	commentanin = abrecomment + ((any|blank|comment)*) + fechacomment ;
 	
 	
 Tokens
 	inteiro = inteiro ;
 	real = real ;
-	commentlinha = '//' + any + lf* ;
+	commentlinha = '//' + (any*) + lf* ;
 	comentariobloco =  comment ;
 	comentarioaninhado = commentanin ;
 	abc = '[' ;
