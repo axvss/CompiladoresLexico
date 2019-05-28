@@ -8,27 +8,25 @@ Helpers
 	lf = 10 ;
 	tab = 9 ;
 	space = ' ' ;
-	blank = cr + lf |tab |lf | cr;
+	blank = cr + lf |lf;
+	abrec = '/*' ;
+	fechac = '*/' ;
 	inteiro = numero+ ;
-	real = numero+ '.' + numero+;
-	
-	any = (under|inteiro|real|letra|space);
+	real = numero+ ',' + numero+;
+	any = (under|inteiro|real|letra|space) ;
 	anysimbol = ('''|'['|']'|','|'.'|'+'|'-'|'*'|'/'|'>'|'<'|'=');
-	abrecomment = '/*' ;
-	fechacomment = '*/';
-	comment = abrecomment + ((any|anysimbol|blank)*) + fechacomment ;
-	commentanin = abrecomment + ((any|anysimbol|blank|comment)*) + fechacomment ;
+	comment = abrec + ((any|blank|anysimbol)*) + fechac ;
+	comentanin = abrec + ((any|blank|comment|anysimbol)*) + fechac ;
 	
 	
 Tokens
+	string = ''' + ((any|tab)*) + ''' ;
 	inteiro = inteiro ;
 	real = real ;
-	string = ''' + ((any|tab)*) + ''' ;
-	vetorinteiro = '[' + ((inteiro + ',')*) + inteiro + ']';
-	vetorreal = '[' + ((real + ',')*) + real + ']';
-	commentlinha = '//' + ((any|anysimbol)*) + lf* ;
-	comentariobloco =  comment ;
-	comentarioaninhado = commentanin ;
+	pontvirg = ';' ;
+	tab = tab ;
+	abrec = abrec ;
+	fechac = fechac ;
 	abc = '[' ;
 	fc = ']' ;
 	virg = ',';
