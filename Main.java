@@ -1,37 +1,39 @@
-// Main 1.0
-import sable.lexer.* ;
-import sable.node.*;
 
-import java.io.* ;
- 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PushbackReader;
+
+
+
+import sable.lexer.Lexer;
+import sable.lexer.LexerException;
+import sable.node.Token;
+
+
 public class Main {
-   public static void main(String[] args) throws LexerException, IOException {
-      if (args.length > 0) {
-    	  Lexer lexer = null;
-         try {
-            lexer = new Lexer (new PushbackReader(     // chama o lexer pra trabalhar
-            		new FileReader(args[0]), 1024));
-         }
-         catch (Exception e) {
-            System.out.println (e) ;
-         }
-         String parada = "class sable.node.EOF"; // string pra usar como condição de parada no while
-         Token t = lexer.getToken();
-         String check = t.getClass().toString(); // nome do nosso token
-         
-         while (!check.equals(parada)) { // quando chega no final, para
-         System.out.println(check); // enquanto nao chega vai imprimindo
-         lexer.next(); // e passando pro próximo
-         t = lexer.getToken(); 
-         check = t.getClass().toString(); 
-         }
-         
-         
-      }
-      
-      else {
-         System.err.println("nada na entrada =(");
-         System.exit(1);
-      }
-   }
+	 public static void main(String[] args) throws LexerException, IOException { 
+		Lexer lexer = null;
+		try {
+			lexer = new Lexer (new PushbackReader( 
+			        new FileReader(args[0]), 1024));
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+		}
+		String parada = "EOF" ;
+		Token t = lexer.next() ;
+		String check = t.getClass().getSimpleName() ;
+		while (!check.equals(parada)){
+			if(check.equals("TBlank")) {
+				System.out.println("") ;
+			} else if(check.equals("TSpc")){
+				System.out.print(" ");
+			}else {
+				System.out.print((t.getClass().getSimpleName())) ;
+			}
+			t = lexer.next() ;
+			check = t.getClass().getSimpleName();
+		}
+	 }
 }

@@ -10,17 +10,25 @@ Helpers
 	space = ' ' ;
 	blank = cr + lf |tab |lf | cr;
 	inteiro = numero+ ;
-	real = numero+ ',' + numero+;
-
-	comment = '/*' + ((under|inteiro|real|letra|space|blank)*) + '*/' ;
-
+	real = numero+ '.' + numero+;
+	
+	any = (under|inteiro|real|letra|space);
+	anysimbol = ('''|'['|']'|','|'.'|'+'|'-'|'*'|'/'|'>'|'<'|'=');
+	abrecomment = '/*' ;
+	fechacomment = '*/';
+	comment = abrecomment + ((any|anysimbol|blank)*) + fechacomment ;
+	commentanin = abrecomment + ((any|anysimbol|blank|comment)*) + fechacomment ;
 	
 	
 Tokens
 	inteiro = inteiro ;
 	real = real ;
-	commentlinha = '//' ;
+	string = ''' + ((any|tab)*) + ''' ;
+	vetorinteiro = '[' + ((inteiro + ',')*) + inteiro + ']';
+	vetorreal = '[' + ((real + ',')*) + real + ']';
+	commentlinha = '//' + ((any|anysimbol)*) + lf* ;
 	comentariobloco =  comment ;
+	comentarioaninhado = commentanin ;
 	abc = '[' ;
 	fc = ']' ;
 	virg = ',';
@@ -55,4 +63,3 @@ Tokens
 
 Ignored Tokens
 	blank ;
-	
