@@ -10,19 +10,23 @@ Helpers
 	space = ' ' ;
 	blank = cr + lf |tab |lf | cr;
 	inteiro = numero+ ;
-	real = numero+ ',' + numero+;
+	real = numero+ '.' + numero+;
 	
 	any = (under|inteiro|real|letra|space);
+	anysimbol = ('''|'['|']'|','|'.'|'+'|'-'|'*'|'/'|'>'|'<'|'=');
 	abrecomment = '/*' ;
 	fechacomment = '*/';
-	comment = abrecomment + ((any|blank)*) + fechacomment ;
-	commentanin = abrecomment + ((any|blank|comment)*) + fechacomment ;
+	comment = abrecomment + ((any|anysimbol|blank)*) + fechacomment ;
+	commentanin = abrecomment + ((any|anysimbol|blank|comment)*) + fechacomment ;
 	
 	
 Tokens
 	inteiro = inteiro ;
 	real = real ;
-	commentlinha = '//' + (any*) + lf* ;
+	string = ''' + ((any|tab)*) + ''' ;
+	vetorinteiro = '[' + ((inteiro + ',')*) + inteiro + ']';
+	vetorreal = '[' + ((real + ',')*) + real + ']';
+	commentlinha = '//' + ((any|anysimbol)*) + lf* ;
 	comentariobloco =  comment ;
 	comentarioaninhado = commentanin ;
 	abc = '[' ;
