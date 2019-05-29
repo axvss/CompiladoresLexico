@@ -13,13 +13,13 @@ Helpers
 	fechac = '*/' ;
 	inteiro = numero+ ;
 	real = numero+ ',' + numero+;
-	any = (under|inteiro|real|letra|space) ;
-	anysimbol = ('''|'['|']'|','|'.'|'+'|'-'|'*'|'/'|'>'|'<'|'=');
-	comment = abrec + ((any|blank|anysimbol)*) + fechac ;
-	comentanin = abrec + ((any|blank|comment|anysimbol)*) + fechac ;
+	any = ((under|inteiro|real|letra|space)*) ;
+	anysimbol = ('''|'['|']'|','|'.'|'+'|'-'|'*'|'>'|'<'|'=');
+	comentlinha = '//' + (any|(abrec|fechac|anysimbol)*) + blank;
 	
 	
 Tokens
+	comentariolinha = comentlinha ;
 	string = ''' + ((any|tab)*) + ''' ;
 	inteiro = inteiro ;
 	real = real ;
